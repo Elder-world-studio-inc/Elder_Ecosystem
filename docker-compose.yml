@@ -16,6 +16,7 @@ services:
   admin-engine:
     build:
       context: ./slot-2-admin
+      # Force rebuild
       args:
         NEXT_PUBLIC_API_URL: http://staff.elderworldsstudio.com
     container_name: admin-engine

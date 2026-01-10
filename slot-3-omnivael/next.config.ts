@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   // Forced rebuild trigger
   output: 'standalone',
-  reactCompiler: true,
+  // reactCompiler: true,
   images: {
     remotePatterns: [
       {

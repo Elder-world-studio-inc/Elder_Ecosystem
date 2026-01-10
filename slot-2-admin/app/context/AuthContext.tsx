@@ -35,6 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const decoded: any = jwtDecode(token);
         // Ensure token is not expired
         if (decoded.exp * 1000 > Date.now()) {
+             // eslint-disable-next-line react-hooks/set-state-in-effect
              setUser({
                 id: decoded.id,
                 username: decoded.username,

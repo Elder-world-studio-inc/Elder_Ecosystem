@@ -41,11 +41,6 @@ export default function LevelDesignPage() {
     priority: 'medium'
   });
 
-  useEffect(() => {
-    if (authLoading || !user) return;
-    fetchProjects();
-  }, [authLoading, user]);
-
   const fetchProjects = async () => {
     try {
       const response = await interactiveApi.getProjects();
@@ -57,6 +52,12 @@ export default function LevelDesignPage() {
       console.error('Failed to fetch projects:', error);
     }
   };
+
+  useEffect(() => {
+    if (authLoading || !user) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchProjects();
+  }, [authLoading, user]);
 
   const selectedProject = projects.find(p => p.id === selectedProjectId) || projects[0];
 

@@ -6,6 +6,13 @@ import { GlassCard } from '@/components/ui/GlassCard';
 type SortField = 'category' | 'allocated' | 'actual' | 'variance' | 'startDate' | 'endDate';
 type SortDirection = 'asc' | 'desc';
 
+const SortIcon = ({ field, currentField, direction }: { field: SortField, currentField: SortField, direction: SortDirection }) => {
+    if (currentField !== field) return <ArrowUpDown size={14} className="ml-1 text-gray-600" />;
+    return direction === 'asc' ? 
+      <ArrowUp size={14} className="ml-1 text-blue-400" /> : 
+      <ArrowDown size={14} className="ml-1 text-blue-400" />;
+};
+
 export default function BudgetTab() {
   const { budgetItems } = useAdmin();
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,13 +56,6 @@ export default function BudgetTab() {
       setSortField(field);
       setSortDirection('asc');
     }
-  };
-
-  const SortIcon = ({ field }: { field: SortField }) => {
-    if (sortField !== field) return <ArrowUpDown size={14} className="ml-1 text-gray-600" />;
-    return sortDirection === 'asc' ? 
-      <ArrowUp size={14} className="ml-1 text-blue-400" /> : 
-      <ArrowDown size={14} className="ml-1 text-blue-400" />;
   };
 
   return (

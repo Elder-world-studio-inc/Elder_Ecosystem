@@ -85,9 +85,9 @@ export default function ContractSigningModal({
               <span>Work-For-Hire Agreement • Ref: {Math.random().toString(36).substr(2, 8).toUpperCase()}</span>
             </div>
             <p className="mb-4">
-              I, the undersigned ("Creator"), hereby irrevocably assign, transfer, and convey to 
-              <strong className="text-white"> Elder World Studio, Inc.</strong> ("Company") all right, title, and interest 
-              in and to the asset designated as <strong className="text-white">"{assetName}"</strong>.
+              I, the undersigned (&quot;Creator&quot;), hereby irrevocably assign, transfer, and convey to 
+              <strong className="text-white"> Elder World Studio, Inc.</strong> (&quot;Company&quot;) all right, title, and interest 
+              in and to the asset designated as <strong className="text-white">&quot;{assetName}&quot;</strong>.
             </p>
             <p className="mb-4">
               This transfer includes, but is not limited to, all copyrights, trademarks, moral rights, 
@@ -95,7 +95,7 @@ export default function ContractSigningModal({
               in any and all media now known or hereafter devised.
             </p>
             <p>
-              By executing this agreement, I acknowledge this work is a "work made for hire" 
+              By executing this agreement, I acknowledge this work is a &quot;work made for hire&quot; 
               and I have received fair consideration.
             </p>
           </div>

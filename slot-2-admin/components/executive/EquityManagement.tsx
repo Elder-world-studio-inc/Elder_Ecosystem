@@ -13,12 +13,6 @@ export default function EquityManagement() {
   const [newShareholder, setNewShareholder] = useState({ name: '', type: 'Investor', shares: '', email: '' });
   const [grantData, setGrantData] = useState({ userId: '', shares: '' });
 
-  useEffect(() => {
-    if (showGrantModal) {
-      fetchEmployees();
-    }
-  }, [showGrantModal]);
-
   const fetchEmployees = async () => {
     try {
       const res = await usersApi.getAll();
@@ -27,6 +21,13 @@ export default function EquityManagement() {
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    if (showGrantModal) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      fetchEmployees();
+    }
+  }, [showGrantModal]);
 
   const handleAddShareholder = async (e: React.FormEvent) => {
     e.preventDefault();

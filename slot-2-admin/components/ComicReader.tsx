@@ -12,7 +12,10 @@ export default function ComicReader({ pages, title }: ComicReaderProps) {
 
   // Reset page when comic changes
   useEffect(() => {
-    setCurrentPage(0);
+    if (currentPage !== 0) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setCurrentPage(0);
+    }
   }, [pages]);
 
   const nextPage = () => {

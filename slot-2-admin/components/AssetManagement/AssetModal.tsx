@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { X, Save, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { assetApi } from '@/lib/api';
 import { useAuth } from '@/app/context/AuthContext';
+import { GlassButton } from '@/components/ui/GlassButton';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 interface AssetPacket {
   assetId?: string;
@@ -139,7 +141,7 @@ export default function AssetModal({ isOpen, onClose, onSuccess, asset }: AssetM
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-gray-900 border border-gray-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
+      <GlassCard className="bg-gray-900 border border-gray-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-0">
         <div className="flex justify-between items-center p-6 border-b border-gray-800 bg-gray-900/50 sticky top-0 backdrop-blur-md">
           <div>
             <h2 className="text-xl font-bold text-white">

@@ -6,6 +6,8 @@ import ContractSigningModal from '@/components/legal/ContractSigningModal';
 import RouteGuard from '@/components/RouteGuard';
 import { useAuth } from '@/app/context/AuthContext';
 import { assetApi } from '@/lib/api';
+import { GlassButton } from '@/components/ui/GlassButton';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 interface Asset {
   assetId: string;

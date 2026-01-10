@@ -4,6 +4,8 @@ import RouteGuard from '@/components/RouteGuard';
 import { useAdmin } from '@/app/context/AdminContext';
 import { useMemo, useState } from 'react';
 import BudgetTab from './BudgetTab';
+import { GlassButton } from '@/components/ui/GlassButton';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 export default function FinancialsPage() {
   const { intangibleAssetsValue, royaltyCategories, generatedReceipts } = useAdmin();

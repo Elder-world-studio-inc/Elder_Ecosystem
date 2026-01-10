@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useAdmin, BudgetItem } from '@/app/context/AdminContext';
 import { Search, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 type SortField = 'category' | 'allocated' | 'actual' | 'variance' | 'startDate' | 'endDate';
 type SortDirection = 'asc' | 'desc';

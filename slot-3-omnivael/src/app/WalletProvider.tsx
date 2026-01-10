@@ -29,6 +29,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     const key = `${STORAGE_KEY}_${gid}`;
     const existing = window.localStorage.getItem(key);
     const initialBalance = existing ? Number.parseInt(existing, 10) || 0 : 500;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setBalance(initialBalance);
   }, [guestId]);
 

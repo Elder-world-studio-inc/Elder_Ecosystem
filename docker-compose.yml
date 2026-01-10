@@ -1,6 +1,6 @@
 version: '3.8'
 
-# Trigger fresh deployment
+# Trigger fresh deployment (Omnivael Fix)
 services:
   backend:
     build: ./backend-core

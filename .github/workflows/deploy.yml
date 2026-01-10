@@ -1,0 +1,89 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            admin:
+              - 'admin-frontend/**'
+            reader:
+              - 'omnivael-frontend/**'
+            config:
+              - 'docker-compose.prod.yml'
+              - 'nginx/**'
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          envs: DATABASE_URL,NEXTAUTH_SECRET
+          script: |
+            # Set target directory (default to ~/Admin-Engine if secret not set)
+            TARGET_DIR="${{ secrets.VPS_PROJECT_PATH }}"
+            if [ -z "$TARGET_DIR" ]; then
+              TARGET_DIR="~/Admin-Engine"
+            fi
+            
+            echo "Deploying to $TARGET_DIR..."
+            
+            # Check if directory exists
+            if [ ! -d "$TARGET_DIR" ]; then
+              echo "Directory $TARGET_DIR does not exist. Please clone the repository on the VPS first."
+              exit 1
+            fi
+            
+            cd $TARGET_DIR
+            
+            # Pull latest changes
+            git pull
+            
+            # Create/Update .env file for Docker Compose
+            echo "Creating .env file..."
+            echo "DATABASE_URL=$DATABASE_URL" > .env
+            echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env
+            
+            # Determine services to rebuild
+            SERVICES=""
+            
+            if [ "${{ steps.changes.outputs.backend }}" == 'true' ]; then
+              SERVICES="$SERVICES backend"
+            fi
+            
+            if [ "${{ steps.changes.outputs.admin }}" == 'true' ]; then
+              SERVICES="$SERVICES admin-engine"
+            fi
+            
+            if [ "${{ steps.changes.outputs.reader }}" == 'true' ]; then
+              SERVICES="$SERVICES omnivael-reader"
+            fi
+            
+            if [ "${{ steps.changes.outputs.config }}" == 'true' ]; then
+               SERVICES="$SERVICES nginx"
+            fi
+            
+            if [ -n "$SERVICES" ]; then
+              echo "Rebuilding and restarting services: $SERVICES"
+              # Build and recreate containers for changed services
+              docker-compose -f docker-compose.prod.yml up -d --build $SERVICES
+            else
+              echo "No service-specific changes detected."
+              # Ensure everything is running anyway
+              docker-compose -f docker-compose.prod.yml up -d
+            fi

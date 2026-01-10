@@ -1,0 +1,157 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Themes */
+.themeDark {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+  --header-bg: rgba(10, 10, 10, 0.9);
+  --control-hover: rgba(255, 255, 255, 0.1);
+}
+
+.themeLight {
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+  --header-bg: rgba(249, 249, 249, 0.9);
+  --control-hover: rgba(0, 0, 0, 0.05);
+}
+
+.themeSepia {
+  background-color: #f4ecd8;
+  color: #433422;
+  --header-bg: rgba(244, 236, 216, 0.9);
+  --control-hover: rgba(67, 52, 34, 0.1);
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.iconButton:hover {
+  background-color: var(--control-hover);
+}
+
+.settingsMenu {
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  min-width: 240px;
+}
+
+.settingsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settingsLabel {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.themeToggles {
+  display: flex;
+  gap: 8px;
+}
+
+.themeOption {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.themeOption.active {
+  border-color: currentColor;
+}
+
+.fontSizeControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--control-hover);
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.contentArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 80px 24px 100px;
+  scroll-behavior: smooth;
+}
+
+.proseContainer {
+  max-width: 65ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.proseContainer p {
+  margin-bottom: 1.5em;
+}
+
+.proseContainer h1, .proseContainer h2, .proseContainer h3 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+}

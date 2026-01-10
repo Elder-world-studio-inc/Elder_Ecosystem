@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=development
+    networks:
+      - elder-studio-network
+
+  admin-engine:
+    build: ./admin-frontend
+    container_name: admin-engine
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - elder-studio-network
+
+  omnivael-reader:
+    build: ./omnivael-frontend
+    container_name: omnivael-reader
+    ports:
+      - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - elder-studio-network
+
+networks:
+  elder-studio-network:
+    driver: bridge

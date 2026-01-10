@@ -98,22 +98,22 @@ export default function BudgetTab() {
                 <thead className="bg-white/5 text-gray-400 text-xs uppercase tracking-wider">
                     <tr>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('category')}>
-                            <div className="flex items-center">Budget Category <SortIcon field="category" /></div>
+                            <div className="flex items-center">Budget Category <SortIcon field="category" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('allocated')}>
-                            <div className="flex items-center">Allocated <SortIcon field="allocated" /></div>
+                            <div className="flex items-center">Allocated <SortIcon field="allocated" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('actual')}>
-                            <div className="flex items-center">Actual <SortIcon field="actual" /></div>
+                            <div className="flex items-center">Actual <SortIcon field="actual" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('variance')}>
-                            <div className="flex items-center">Variance <SortIcon field="variance" /></div>
+                            <div className="flex items-center">Variance <SortIcon field="variance" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('startDate')}>
-                            <div className="flex items-center">Start Date <SortIcon field="startDate" /></div>
+                            <div className="flex items-center">Start Date <SortIcon field="startDate" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                         <th className="px-6 py-4 cursor-pointer hover:text-white" onClick={() => handleSort('endDate')}>
-                            <div className="flex items-center">End Date <SortIcon field="endDate" /></div>
+                            <div className="flex items-center">End Date <SortIcon field="endDate" currentField={sortField} direction={sortDirection} /></div>
                         </th>
                     </tr>
                 </thead>

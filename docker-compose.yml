@@ -2,18 +2,19 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    build: ./backend-core
     container_name: backend
     ports:
       - "5000:5000"
     environment:
       - PORT=5000
       - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
     networks:
       - elder-studio-network
 
   admin-engine:
-    build: ./admin-frontend
+    build: ./slot-2-admin
     container_name: admin-engine
     ports:
       - "3000:3000"
@@ -25,12 +26,15 @@ services:
       - elder-studio-network
 
   omnivael-reader:
-    build: ./omnivael-frontend
+    build: ./slot-3-omnivael
     container_name: omnivael-reader
     ports:
       - "3001:3000"
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:5000
+      - DATABASE_URL=${DATABASE_URL}
+      - NEXTAUTH_SECRET=dev-secret-key-change-in-prod
+      - NEXTAUTH_URL=http://localhost:3001
     depends_on:
       - backend
     networks:

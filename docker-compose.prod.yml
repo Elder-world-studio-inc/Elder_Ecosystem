@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    build: ./backend-core
     container_name: backend
     restart: always
     environment:
@@ -14,7 +14,7 @@ services:
 
   admin-engine:
     build:
-      context: ./admin-frontend
+      context: ./slot-2-admin
       args:
         NEXT_PUBLIC_API_URL: http://staff.elderworldsstudio.com
     container_name: admin-engine
@@ -28,7 +28,7 @@ services:
 
   omnivael-reader:
     build:
-      context: ./omnivael-frontend
+      context: ./slot-3-omnivael
       args:
         NEXT_PUBLIC_API_URL: http://omnivael.com
     container_name: omnivael-reader

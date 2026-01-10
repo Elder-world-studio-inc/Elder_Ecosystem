@@ -18,11 +18,11 @@ jobs:
         with:
           filters: |
             backend:
-              - 'backend/**'
+              - 'backend-core/**'
             admin:
-              - 'admin-frontend/**'
+              - 'slot-2-admin/**'
             reader:
-              - 'omnivael-frontend/**'
+              - 'slot-3-omnivael/**'
             config:
               - 'docker-compose.prod.yml'
               - 'nginx/**'

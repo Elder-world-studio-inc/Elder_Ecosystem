@@ -24,7 +24,7 @@ jobs:
             reader:
               - 'slot-3-omnivael/**'
             config:
-              - 'docker-compose.prod.yml'
+              - 'docker-compose.yml'
               - 'nginx/**'
 
       - name: Deploy via SSH
@@ -81,9 +81,9 @@ jobs:
             if [ -n "$SERVICES" ]; then
               echo "Rebuilding and restarting services: $SERVICES"
               # Build and recreate containers for changed services
-              docker-compose -f docker-compose.prod.yml up -d --build $SERVICES
+              docker-compose -f docker-compose.yml up -d --build $SERVICES
             else
               echo "No service-specific changes detected."
               # Ensure everything is running anyway
-              docker-compose -f docker-compose.prod.yml up -d
+              docker-compose -f docker-compose.yml up -d
             fi

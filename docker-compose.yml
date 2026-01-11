@@ -1,5 +1,6 @@
 version: '3.8'
 
+# Production Deployment Configuration
 services:
   # Backend is handled by external project (adminengine_backend)
   # Connecting via Host IP

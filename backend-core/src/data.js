@@ -81,6 +81,7 @@ const USERS = [
     passwordHash: hash('admin123'), 
     role: 'admin', 
     divisionId: null, 
+    scan_count: 0,
     mfaEnabled: true,
     contactDetails: { phone: '+1-555-0100', location: 'HQ' }
   },

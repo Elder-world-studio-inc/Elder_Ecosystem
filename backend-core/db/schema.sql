@@ -16,6 +16,7 @@ CREATE TABLE users (
     
     -- Status / Subscription
     is_elite BOOLEAN DEFAULT FALSE, 
+    scan_count INT DEFAULT 0,
     
     -- Metadata
     role VARCHAR(20) DEFAULT 'user', -- 'user', 'admin', 'moderator'

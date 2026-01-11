@@ -157,6 +157,33 @@ const SHAREHOLDERS = [
   }
 ];
 
+const TRANSACTIONS = [
+  {
+    id: 'tx-001',
+    userId: '5',
+    type: 'UNLOCK',
+    item: 'The Chronicles of Omnivael - Chapter 1',
+    amount: -15,
+    timestamp: '2026-01-10T14:30:00Z'
+  },
+  {
+    id: 'tx-002',
+    userId: '5',
+    type: 'DEPOSIT',
+    item: 'Shard Pack (Small)',
+    amount: 100,
+    timestamp: '2026-01-09T09:15:00Z'
+  },
+  {
+    id: 'tx-003',
+    userId: '5',
+    type: 'UNLOCK',
+    item: 'Wayfarer: Origins - Issue #1',
+    amount: -5,
+    timestamp: '2026-01-08T18:45:00Z'
+  }
+];
+
 const AUDIT_LOGS = [
   {
     id: 'log-1',
@@ -328,6 +355,7 @@ module.exports = {
   WAYFARER_VAULT_ASSETS,
   WAYFARER_PROJECTS,
   OMNIVAEL_LIBRARY,
+  TRANSACTIONS,
   AUDIT_LOGS,
   SHAREHOLDERS
 };

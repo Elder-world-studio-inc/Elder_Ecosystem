@@ -32,9 +32,9 @@ services:
     networks:
       - elder-studio-network
 
-  nginx:
+  gateway:
     image: nginx:alpine
-    container_name: nginx
+    container_name: gateway
     restart: always
     ports:
       - "80:80"

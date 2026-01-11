@@ -81,7 +81,6 @@ const USERS = [
     passwordHash: hash('admin123'), 
     role: 'admin', 
     divisionId: null, 
-    scan_count: 0,
     mfaEnabled: true,
     contactDetails: { phone: '+1-555-0100', location: 'HQ' }
   },
@@ -155,33 +154,6 @@ const SHAREHOLDERS = [
     shares: 9000000,
     percentage: 90.0,
     email: 'admin@elderworlds.com'
-  }
-];
-
-const TRANSACTIONS = [
-  {
-    id: 'tx-001',
-    userId: '5',
-    type: 'UNLOCK',
-    item: 'The Chronicles of Omnivael - Chapter 1',
-    amount: -15,
-    timestamp: '2026-01-10T14:30:00Z'
-  },
-  {
-    id: 'tx-002',
-    userId: '5',
-    type: 'DEPOSIT',
-    item: 'Shard Pack (Small)',
-    amount: 100,
-    timestamp: '2026-01-09T09:15:00Z'
-  },
-  {
-    id: 'tx-003',
-    userId: '5',
-    type: 'UNLOCK',
-    item: 'Wayfarer: Origins - Issue #1',
-    amount: -5,
-    timestamp: '2026-01-08T18:45:00Z'
   }
 ];
 
@@ -356,7 +328,6 @@ module.exports = {
   WAYFARER_VAULT_ASSETS,
   WAYFARER_PROJECTS,
   OMNIVAEL_LIBRARY,
-  TRANSACTIONS,
   AUDIT_LOGS,
   SHAREHOLDERS
 };

@@ -125,13 +125,3 @@ CREATE TABLE IF NOT EXISTS omnivael_library (
     description TEXT,
     price NUMERIC DEFAULT 0
 );
-
--- Transactions (Premium Purchases)
-CREATE TABLE IF NOT EXISTS transactions (
-    id TEXT PRIMARY KEY,
-    user_id UUID NOT NULL,
-    chapter_id TEXT NOT NULL,
-    amount INT NOT NULL,
-    date TIMESTAMP DEFAULT NOW(),
-    status TEXT DEFAULT 'COMPLETED'
-);

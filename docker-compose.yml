@@ -39,7 +39,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/gateway.conf:/etc/nginx/conf.d/default.conf
+      # Mount the entire directory to avoid file-vs-directory conflicts
+      - ./nginx:/etc/nginx/conf.d
     depends_on:
       - admin-engine
       - omnivael-reader

@@ -33,14 +33,11 @@ services:
       - elder-studio-network
 
   gateway:
-    image: nginx:alpine
+    build: ./nginx
     container_name: gateway
     restart: always
     ports:
       - "80:80"
-    volumes:
-      # Mount the entire directory to avoid file-vs-directory conflicts
-      - ./nginx:/etc/nginx/conf.d
     depends_on:
       - admin-engine
       - omnivael-reader
